@@ -1,9 +1,11 @@
 const routes = [
   {
     path: '/',
+
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/IndexPage.vue') }
+      { path: '', component: () => import('pages/IndexPage.vue'),  name: 'home', },
+      { path: '/date', component: () => import('pages/DatePage.vue'),  name: 'date', },
     ]
   },
 

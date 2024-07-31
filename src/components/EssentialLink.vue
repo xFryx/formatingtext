@@ -1,9 +1,7 @@
 <template>
   <q-item
     clickable
-    tag="a"
-    target="_blank"
-    :href="props.link"
+    @click="redirect_to(props.link)"
   >
     <q-item-section
       v-if="props.icon"
@@ -18,11 +16,13 @@
     </q-item-section>
   </q-item>
 </template>
-
 <script setup>
+import { useRouter } from "vue-router"
 defineOptions({
   name: 'EssentialLink'
 })
+
+const router = useRouter();
 
 const props = defineProps({
   title: {
@@ -45,4 +45,8 @@ const props = defineProps({
     default: ''
   }
 })
+
+const redirect_to = () => {
+  router.push({name: props.link});
+}
 </script>
